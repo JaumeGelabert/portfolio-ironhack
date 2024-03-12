@@ -30,25 +30,30 @@ export default function Home() {
       />
       {/* Proyectos */}
       <div className="flex flex-col justify-start items-start gap-10 mt-10">
-        {projects.map(({ name, description, stack, link }: any) => (
-          <div className="flex flex-col justify-start items-start">
-            <Link
-              prefetch
-              href={link}
-              target="_blank"
-              className="text-lg font-medium text-neutral-600"
+        {projects.map(
+          ({ name, description, stack, link }: any, index: number) => (
+            <div
+              key={index}
+              className="flex flex-col justify-start items-start"
             >
-              {name}
-            </Link>
-            <p className="text-neutral-400">{description}</p>
-            {/* Map over the stack used */}
-            <div className="flex flex-row gap-4 mt-6">
-              {stack.map((tech: any) => (
-                <Badge>{tech}</Badge>
-              ))}
+              <Link
+                prefetch
+                href={link}
+                target="_blank"
+                className="text-lg font-medium text-neutral-600"
+              >
+                {name}
+              </Link>
+              <p className="text-neutral-400">{description}</p>
+              {/* Map over the stack used */}
+              <div className="flex flex-row gap-4 mt-6">
+                {stack.map((tech: any, index: number) => (
+                  <Badge key={index}>{tech}</Badge>
+                ))}
+              </div>
             </div>
-          </div>
-        ))}
+          )
+        )}
       </div>
     </ContentWrapper>
   );
